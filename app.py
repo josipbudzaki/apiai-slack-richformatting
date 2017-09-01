@@ -48,9 +48,9 @@ def webhook():
 
 
 def processRequest(req):
-    if req.get("result").get("action") != "getCircles":
+    if req.get("result").get("action") != "getPurpose":
         return {}
-    baseurl = "https://app.holaspirit.com/api/public/organizations/advertima/circles"
+    baseurl = "https://app.holaspirit.com//api/public/organizations/advertima/roles/administration-ber"
 
     result = urllib.urlopen(baseurl).read()
 
@@ -70,8 +70,8 @@ def processRequest(req):
 
 
 def makeWebhookResult(data):
-    name = data.get('name')
-    if name is None:
+    purpose = data.get('purpose')
+    if purpose is None:
         return {}
 
     # result = query.get('result')
@@ -94,7 +94,7 @@ def makeWebhookResult(data):
 
     # # print(json.dumps(item, indent=4))
 
-    speech = "Circles are" + data.get('name')
+    speech = "Purpose is" + data.get('purpose')
 
     print("Response:")
     print(speech)
